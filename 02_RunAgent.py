@@ -6,8 +6,8 @@ from llama_index.core import load_index_from_storage
 from llama_index.core.agent import ReActAgent
 from llama_index.core.tools import QueryEngineTool
 from llama_index.core.tools import ToolMetadata
-from llama_index.llms.openai_like import OpenAILike
-from llama_index.embeddings.octoai import OctoAIEmbedding
+from llama_index.llms.openai import OpenAI
+from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import Settings as LlamaGlobalSettings
 
 from EasySpeech import easySpeech
@@ -17,14 +17,12 @@ def InitializeAgent():
     load_dotenv()
 
     # Set the default model to use for embeddings
-    LlamaGlobalSettings.embed_model = OctoAIEmbedding()
+    LlamaGlobalSettings.embed_model = OpenAIEmbedding()
 
     # Create an llm object to use for the QueryEngine and the ReActAgent
-    llm = OpenAILike(
-        model="meta-llama-3.1-8b-instruct", # previously meta-llama-3.1-70b-instruct
-        api_base="https://text.octoai.run/v1",
-        api_key=os.environ["OCTOAI_API_KEY"],
-        context_window=40000,
+    llm = OpenAI(
+        model="gpt-3.5-turbo",
+        context_window=10000,
         is_function_calling_model=True,
         is_chat_model=True,
     )
@@ -71,6 +69,7 @@ if __name__ == "__main__":
 
     # 2. Human responds to the introduction
     human_response = input("Human >>> ")
+    # human_response = easySpeech.ListenToHuman()
 
     # 3. KawaiiKawaii follows up on human response and ask another question
     agent_response = agent.chat(

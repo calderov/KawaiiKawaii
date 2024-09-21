@@ -24,8 +24,8 @@ class EasySpeech:
         with sr.Microphone() as source:
             print("Listening...")
             audio = self.recognizer.listen(source)
-
         try:
+            print("Recognizing...")
             text = self.recognizer.recognize_google(audio)
             print(f"You said: {text}")
             return text.lower()
@@ -51,3 +51,6 @@ class EasySpeech:
         play(audio)
 
 easySpeech = EasySpeech()
+
+if __name__ == "__main__":
+    phrase = easySpeech.ListenToHuman()
