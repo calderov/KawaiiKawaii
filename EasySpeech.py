@@ -38,6 +38,10 @@ class EasySpeech:
             print(f"Could not request results; {e}")
             return ""
 
+    def Listen(self):
+        # Todo: Implement this
+        input("Listening...")
+
     def TextToSpeechLocal(self, text):
         self.local_synthetizer.say(text)
         self.local_synthetizer.runAndWait()

@@ -59,19 +59,14 @@ def PrintAndSay(text, subject=""):
 if __name__ == "__main__":
     agent = InitializeAgent()
 
-    # 0. KawaiiKawaii introduces itself   
-    agent_response = agent.chat(
-        """
-        You are KawaiiKawaii, a cute and helpful assistant, your user Sofia Bennet is your user, please introduce yourself.
-        """
-    )
+    # 0. KawaiiKawaii introduces itself
     input("KawaiiKawaii is ready...")
-    PrintAndSay(str(agent_response), "KawaiiKawaii")
+    PrintAndSay("Hi Sofia, how can I help you with today?!", "KawaiiKawaii")
 
     # 2. Human responds to the introduction
     # TODO: Make this happen through speech recognition (whisper, speech_recognition, etc)
     human_response = "Hey, I'm planning a trip to Barcelona, can you suggest places and activities that I may like"
-    input(">>")
+    easySpeech.Listen()
 
     # 3. KawaiiKawaii follows up on human response and ask another question
     agent_response = agent.chat(
@@ -79,7 +74,7 @@ if __name__ == "__main__":
         You just introduced yourself, Sofia Bennet your user responded the following:
         {human_response}
         ----
-        Please, respond to Sofia based on her input and on the information you have about her preferences, age, previous travel destinations, etc.
+        Please, briefly respond to Sofia based on her input and on the information you have about her preferences, age, previous travel destinations, etc. Reference one of her preferences or previous trips.
         """
     )
     PrintAndSay(str(agent_response), "KawaiiKawaii")
@@ -87,7 +82,7 @@ if __name__ == "__main__":
     # 4. Human responds to the suggestions
     # TODO: Make this happen through speech recognition (whisper, speech_recognition, etc)
     human_response = "Thanks, I'm visiting Milan afterwards, I should be there by November 15th. Please remind me my activities in Milan and recomend accessories of brands I like"
-    input(">>")
+    easySpeech.Listen()
 
     # 5. KawaiiKawaii follows up on human response and ask another question
     agent_response = agent.chat(
