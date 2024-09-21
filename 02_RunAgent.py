@@ -68,16 +68,33 @@ if __name__ == "__main__":
     PrintAndSay(str(agent_response), "KawaiiKawaii")
 
     # 2. Human responds to the introduction
-    human_response = input("Human >>> ")
-    # human_response = easySpeech.ListenToHuman()
+    # TODO: Make this happen through speech recognition (whisper, speech_recognition, etc)
+    human_response = "Hey, I'm planning a trip to Barcelona, can you suggest places and activities that I may like"
+    input(">>")
 
     # 3. KawaiiKawaii follows up on human response and ask another question
     agent_response = agent.chat(
        f"""
-        You just introduced yourself, Sofia your user responded the following:
+        You just introduced yourself, Sofia Bennet your user responded the following:
         {human_response}
         ----
         Please, respond to Sofia.
+        """
+    )
+    PrintAndSay(str(agent_response), "KawaiiKawaii")
+
+    # 4. Human responds to the suggestions
+    # TODO: Make this happen through speech recognition (whisper, speech_recognition, etc)
+    human_response = "Thanks, I'm visiting Milan afterwards, I should be there by November 15th. Please remind me my activities in Milan and recomend accessories of brands I like"
+    input(">>")
+
+    # 5. KawaiiKawaii follows up on human response and ask another question
+    agent_response = agent.chat(
+       f"""
+        Sofia Bennet responded the following:
+        {human_response}
+        ----
+        Please, respond to Sofia, and remember her that she has an alarm set in 5 minutes to subscribe to Phoenix.
         """
     )
     PrintAndSay(str(agent_response), "KawaiiKawaii")
