@@ -65,6 +65,7 @@ if __name__ == "__main__":
         You are KawaiiKawaii, a cute and helpful assistant, your user Sofia Bennet is your user, please introduce yourself.
         """
     )
+    input("KawaiiKawaii is ready...")
     PrintAndSay(str(agent_response), "KawaiiKawaii")
 
     # 2. Human responds to the introduction
@@ -78,7 +79,7 @@ if __name__ == "__main__":
         You just introduced yourself, Sofia Bennet your user responded the following:
         {human_response}
         ----
-        Please, respond to Sofia.
+        Please, respond to Sofia based on her input and on the information you have about her preferences, age, previous travel destinations, etc.
         """
     )
     PrintAndSay(str(agent_response), "KawaiiKawaii")
@@ -94,7 +95,7 @@ if __name__ == "__main__":
         Sofia Bennet responded the following:
         {human_response}
         ----
-        Please, respond to Sofia, and remember her that she has an alarm set in 5 minutes to subscribe to Phoenix.
+        Please, respond to Sofia based on her input and on the information you have about her preferences, age, previous travel destinations. Also remind her that she has an alarm set in 5 minutes to subscribe to Phoenix.
         """
     )
     PrintAndSay(str(agent_response), "KawaiiKawaii")
